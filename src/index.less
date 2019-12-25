@@ -1,0 +1,312 @@
+@primary-color: #229dc3; // 主题颜色
+@background: #fafafa;    // 背景颜色
+@cell-disabled-color: #979898;  // 单元格前一个月和后一个月日期的字体颜色
+@cell-forbidden-color: #dedede;
+@hover-border-color: #a9a9a9;
+@cell-active-color: #fff;   // 单元格active时的字体颜色
+@btn-color: #818181;    // 按钮颜色
+
+@font-family: 'Microsoft YaHei UI','Microsoft YaHei',DengXian,SimSun,'Segoe UI',Tahoma,Helvetica,sans-serif;
+
+@cell-width: 45px;
+@cell-height: 45px;
+@month-cell-width: floor(@cell-width * 7 / 3);
+@month-cell-height: floor(@cell-height * 7 / 4) ;
+@year-cell-width: floor(@cell-width  * 7 / 4);
+@year-cell-height: floor(@cell-width * 7 / 4);
+
+.btn {
+  display: inline-block;
+  border: 10px solid transparent;
+}
+
+.cell-width-height-mixin(1) {
+  width: @cell-width;
+  height: @cell-height;
+} 
+.cell-width-height-mixin(2) {
+  width: @month-cell-width;
+  height: @month-cell-height;
+  line-height: @month-cell-height;
+}
+.cell-width-height-mixin(3) {
+  width: @year-cell-width;
+  height: @year-cell-height;
+  line-height: @year-cell-height;
+}
+
+
+.calendar-cell(@type) {
+  .cell-width-height-mixin(@type);
+  display: inline-block;
+  text-align: center;
+}
+.cell-hover {
+  &:hover {
+    color: @primary-color;
+    cursor: pointer;
+  }
+}
+.cell-active {
+  &:hover {
+    color: @cell-active-color;
+  }
+  color: @cell-active-color;
+  background: @primary-color;
+}
+
+.x-calendar {
+  &-wrapper {
+    position: absolute;
+    width: calc( @cell-width * 7 + 10px);
+    padding: 5px;
+    background: @background;
+    box-sizing: border-box;
+    font-family: @font-family;
+  }
+  &-header {
+    margin: 0;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &-date {
+    font-weight: 550;
+    &__year, &__month {
+      &:hover {
+        color: @primary-color;
+        cursor: pointer;
+      }
+    }
+  }
+  &-btn {
+    display: flex;
+    &__today {
+      margin: 0 15px;
+      cursor: pointer;
+      &:hover {
+        color: @primary-color;
+      }
+    }
+    &__next {
+      position: relative;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      .a {
+        .btn();
+        border-bottom: none;
+        border-top: 10px solid @btn-color;
+      }
+      .b {
+        .btn();
+        position: absolute;
+        border-bottom: none;
+        border-top: 10px solid @background;
+        top: 4px;
+        left: 0;
+      }
+      &_disabled {
+        cursor: default;
+        .a {
+          border-top: 10px solid #cecece;
+        }
+      }
+    }
+    &__prev {
+      position: relative;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      .a {
+        .btn();
+        border-top: none;
+        border-bottom: 10px solid @btn-color;
+      }
+      .b {
+        position: absolute;
+        .btn();
+        border-top: none;
+        border-bottom: 10px solid @background;
+        bottom: 4px;
+        left: 0;
+      }
+      &_disabled {
+        cursor: default;
+        .a {
+          border-bottom: 10px solid #cecece;
+        }
+      }
+    }
+  }
+  &-week {
+    &__item {
+      .calendar-cell(1);
+      line-height: @cell-height;
+    }
+  }
+  &-cell {
+    .cell-hover();
+    &_active {
+      .cell-active();
+      &_two {
+        color: @primary-color;
+      }
+    }
+    &_forbidden {
+      color: @cell-forbidden-color !important;
+      &:hover {
+        color: @cell-forbidden-color;
+        cursor: not-allowed;
+      }
+    }
+  }
+  &-lunar-day {
+    margin: 0;
+    font-size: 12px;
+  }
+  &-day {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    &__item {
+      .calendar-cell(1);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      &_disabled {
+        color: @cell-disabled-color;
+        &:hover {
+          color: @cell-disabled-color;
+        }
+      }
+    }
+  }
+  &-month {
+    &__item {
+      .calendar-cell(2);
+      font-size: 18px;
+    }
+  }
+  &-year {
+    max-height: calc( @cell-width * 7);
+    overflow-y: scroll;
+    -ms-overflow-style: none; /* ie or edge */
+    scrollbar-width: none;  /* firefox */
+    &::-webkit-scrollbar{
+      display: none;   /* chrome, safari, opera */
+    }
+    &__item {
+      .calendar-cell(3);
+    }
+  }
+  &-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 7px 10px 5px 10px;
+    border-top: 1px solid #e0e0e0;
+    position: relative;
+  }
+}
+
+.assist-input {
+  position: absolute;
+  opacity: 0;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .3s ease;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
+.x-time {
+  &-wrapper {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    height: 30px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    .th, .tm, .ts {
+      width: 20px;
+      padding: 0 5px;
+      text-align: center;
+      outline: none;
+      border: none;
+      resize: none;
+      appearance: none;
+    }
+  }
+}
+.confirm-btn {
+  color: @primary-color;
+  cursor: pointer;
+}
+
+.time-menu {
+  max-width: 150px;
+  display: flex;
+  flex-wrap: wrap;
+  position: absolute;
+  height: auto;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  left: -1px;
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    border: 10px solid transparent;
+    border-bottom: none;
+  }
+  &::before {
+    border-top: 10px solid #e0e0e0;
+    bottom: -10px;
+  }
+  &::after {
+    border-top: 10px solid #fff;
+    bottom: -9px;
+  }
+}
+
+.hour-menu {
+  .time-menu();
+  top: -105px;
+  &::before, &::after {
+    left: 15px;
+  }
+}
+
+.minute-menu {
+  .time-menu();
+  top: -56px;
+  &::before, &::after {
+    left: 50px;
+  }
+}
+
+.second-menu {
+  .time-menu();
+  top: -32px;
+  left: 15px;
+  &::before, &::after {
+    right: 14px;
+  }
+}
+
+.time-span {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  line-height: 25px;
+  text-align: center;
+  font-size: 14px;
+  cursor: pointer;
+  &:hover {
+    color: @primary-color;
+  }
+}
