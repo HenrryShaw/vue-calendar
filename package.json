@@ -1,7 +1,13 @@
 {
-  "name": "vue-calendar",
+  "name": "vue-calendar-xjq",
   "version": "1.0.0",
-  "keywords": ["vue", "calendar", "vue-calendar", "datetimePicker", "datePicker"],
+  "keywords": [
+    "vue",
+    "calendar",
+    "vue-calendar",
+    "datetimePicker",
+    "datePicker"
+  ],
   "author": "xiaojianqin",
   "description": "日历，日期选择器，日期时间选择器",
   "scripts": {
@@ -9,8 +15,15 @@
     "start": "webpack-dev-server --config ./build/webpack.dev.conf.js",
     "test": "jest"
   },
-  "dependencies": {
-    "vue": "^2.6.10"
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:HenrryShaw/vue-calendar.git"
+  },
+  "files": [
+    "src"
+  ],
+  "peerDependencies": {
+    "vue": ">= 2.5.22"
   },
   "devDependencies": {
     "@babel/core": "^7.7.5",
@@ -39,6 +52,7 @@
     "style-loader": "^1.0.1",
     "ts-loader": "^6.2.1",
     "typescript": "^3.7.3",
+    "vue": "^2.6.11",
     "vue-loader": "^15.7.2",
     "vue-template-compiler": "^2.6.10",
     "webpack": "^4.41.2",

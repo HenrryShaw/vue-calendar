@@ -1,11 +1,11 @@
 ## 安装
 ### npm安装
 ```
-npm install vue-calendar --save
+npm install vue-calendar-xjq --save
 ```
 ### yarn安装
 ```
-yarn add vue-calendar
+yarn add vue-calendar-xjq
 ```
 ### CDN
 ```
