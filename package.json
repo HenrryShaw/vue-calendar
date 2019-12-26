@@ -1,6 +1,6 @@
 {
   "name": "vue-calendar-xjq",
-  "version": "1.0.12",
+  "version": "1.0.0",
   "keywords": [
     "vue",
     "calendar",
@@ -23,7 +23,8 @@
     "url": "git@github.com:HenrryShaw/vue-calendar.git"
   },
   "files": [
-    "lib"
+    "lib",
+    "dist"
   ],
   "peerDependencies": {
     "vue": ">= 2.5.22"

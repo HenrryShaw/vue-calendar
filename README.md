@@ -1,3 +1,12 @@
+
+- [安装](#安装)
+- [快速上手](#快速上手)
+- [Attributes](#Attributes)
+- [Events](#Events)
+- [日期格式](#日期格式)
+- [自定义样式](#自定义样式)
+- [截图](#截图)
+
 ## 安装
 ### npm安装
 ```
@@ -10,9 +19,9 @@ yarn add vue-calendar-xjq
 ### CDN
 ```javascript
 <!-- 引入样式 -->
-<link rel="stylesheet" href="index.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vue-calendar-xjq@1.0.0/dist/index.css">
 <!-- 引入组件 -->
-<script src="index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue-calendar-xjq@1.0.0/dist/index.js"></script>
 ```
 ## 快速上手
 ```javascript
@@ -94,3 +103,7 @@ module.exports = {
 ```
 __样式变量__
 > 其它样式变量，请参考[配置文件](src/index.less)
+
+## 截图
+![截图1](screenshot/screenshot_1.png)
+![截图2](screenshot/screenshot_2.jpg)
