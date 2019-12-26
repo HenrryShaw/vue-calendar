@@ -8,6 +8,8 @@
 
 @font-family: 'Microsoft YaHei UI','Microsoft YaHei',DengXian,SimSun,'Segoe UI',Tahoma,Helvetica,sans-serif;
 
+@z-index: 20191226;
+
 @cell-width: 45px;
 @cell-height: 45px;
 @month-cell-width: floor(@cell-width * 7 / 3);
@@ -63,6 +65,8 @@
     background: @background;
     box-sizing: border-box;
     font-family: @font-family;
+    font-size: 16px;
+    z-index: @z-index;
   }
   &-header {
     margin: 0;
@@ -232,13 +236,14 @@
     border: 1px solid #e0e0e0;
     border-radius: 5px;
     .th, .tm, .ts {
-      width: 20px;
+      width: 30px;
       padding: 0 5px;
       text-align: center;
       outline: none;
       border: none;
       resize: none;
-      appearance: none;
+      -webkit-appearance: none;
+      box-sizing: border-box;
     }
   }
 }
@@ -248,7 +253,7 @@
 }
 
 .time-menu {
-  max-width: 150px;
+  max-width: 152px;
   display: flex;
   flex-wrap: wrap;
   position: absolute;

@@ -4,7 +4,7 @@ const webpackBaseConfig = require('./webpack.base.conf')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-const TerserJSPlugin = require('terser-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack')
 
 module.exports = env => {
@@ -17,6 +17,9 @@ module.exports = env => {
       },
       output: {
         filename: 'index.js',
+        path: path.resolve(__dirname, '../lib/'),
+        libraryExport: 'default',
+        libraryTarget: 'commonjs2'
       },
       plugins: [
         new webpack.DefinePlugin({
@@ -28,10 +31,12 @@ module.exports = env => {
           filename: 'index.css',
         }),
         new CleanWebpackPlugin(),
+        new CopyPlugin([
+          { from: 'src/index.less', to: path.resolve(__dirname, '../lib/') },
+        ]),
       ],
       optimization: {
         minimizer: [
-          new TerserJSPlugin(),
           new OptimizeCssAssetsPlugin()
         ],
       },

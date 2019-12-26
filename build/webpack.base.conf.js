@@ -13,11 +13,11 @@ module.exports = env => {
         options
       })
     }
-    if (env === 'production') {
+    if (env === 'production' || env === 'lib') {
       loaders.splice(1, 0, {
         loader: MiniCssExtractPlugin.loader,
         options: {
-          esModule: true,
+          publicPath: '../',
         },
       })
     }
