@@ -19,9 +19,9 @@ yarn add vue-calendar-xjq
 ### CDN
 ```javascript
 <!-- 引入样式 -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vue-calendar-xjq@1.0.0/dist/index.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vue-calendar-xjq@1.1.0/dist/index.css">
 <!-- 引入组件 -->
-<script src="https://cdn.jsdelivr.net/npm/vue-calendar-xjq@1.0.0/dist/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue-calendar-xjq@1.1.0/dist/index.js"></script>
 ```
 ## 快速上手
 ```javascript
