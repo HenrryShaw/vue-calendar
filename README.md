@@ -26,7 +26,7 @@ yarn add vue-calendar-xjq
 ## 快速上手
 ```javascript
 import Vue from 'vue';
-import Calendar from 'vue-calendar-xjq';
+import { Calendar } from 'vue-calendar-xjq';
 import 'vue-calendar-xjq/lib/index.css';
 
 Vue.use(Calendar)
