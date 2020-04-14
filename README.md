@@ -19,9 +19,9 @@ yarn add vue-calendar-xjq
 ### CDN
 ```javascript
 <!-- 引入样式 -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vue-calendar-xjq@1.1.0/dist/index.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vue-calendar-xjq@1.1.1/dist/index.css">
 <!-- 引入组件 -->
-<script src="https://cdn.jsdelivr.net/npm/vue-calendar-xjq@1.1.0/dist/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue-calendar-xjq@1.1.1/dist/index.js"></script>
 ```
 ## 快速上手
 ```javascript
@@ -100,6 +100,19 @@ module.exports = {
     }
   ]
 };
+// vue-cli 3 vue.config.js配置如下
+module.exports = {
+  // ...其他配置
+  css: {
+    loaderOptions: {
+      less:{
+        modifyVars: {
+          'primary-color': '#efce6f',
+        }
+      }
+    }
+  },
+}
 ```
 __样式变量__
 > 其它样式变量，请参考[配置文件](src/index.less)
